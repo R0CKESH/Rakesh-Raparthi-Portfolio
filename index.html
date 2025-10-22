@@ -95,23 +95,10 @@
         }
 
         .contact-info li i {
-            margin-right: 0.5rem;
+            margin-right: 0.5rem; /* Space between icon and text */
             color: var(--primary-color);
             width: 16px;
             text-align: center;
-        }
-
-        .photo-placeholder {
-            width: 90px;
-            height: 90px;
-            background-color: #E9ECEF;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ADB5BD;
-            font-size: 3rem;
-            flex-shrink: 0;
         }
 
         /* --- Section Headings --- */
@@ -301,6 +288,40 @@
             background-color: var(--primary-color);
         }
 
+        /* --- Personal Details --- */
+        .personal-details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .personal-details-list li {
+            display: flex;
+            align-items: flex-start; /* Aligns icon with the first line of text */
+            font-size: 0.9rem;
+            color: var(--sub-text);
+            margin-bottom: 0.75rem;
+            line-height: 1.5; /* Added for readability */
+        }
+
+        .personal-details-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .personal-details-list li i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem; /* Aligns icon nicely with text */
+        }
+        
+        .personal-details-list li strong {
+            color: var(--heading-text);
+            font-weight: 600;
+            margin-right: 0.4rem;
+        }
+
         /* --- Skills --- */
         .skills-grid {
             display: flex;
@@ -341,7 +362,6 @@
                 padding: 1.5rem;
             }
             .header {
-                flex-direction: column-reverse;
                 align-items: center;
                 gap: 1.5rem;
                 text-align: center;
@@ -376,9 +396,6 @@
                         <li><i class="fas fa-envelope"></i> rakeshraparthi8@gmail.com</li>
                         <li><i class="fas fa-map-marker-alt"></i> Jagtial - 505327</li>
                     </ul>
-                </div>
-                <div class="photo-placeholder">
-                    <i class="fas fa-user"></i>
                 </div>
             </header>
 
@@ -468,34 +485,6 @@
                     </ul>
                 </div>
                  
-                <div class="job">
-                    <div class="job-header">
-                        <div>
-                            <h4 class="job-title">Programmer Assistant</h4>
-                            <p class="job-company">Sreeb Technologies, Hyderabad</p>
-                        </div>
-                        <span class="job-dates">07/2016 – 01/2017</span>
-                    </div>
-                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
-                     <ul class="job-responsibilities">
-                        <li>Created the mPoS (mobile Point of Sale) Android (Java) app for Fair Price Shops.</li>
-                        <li>Engineered the Aadhaar authentication module (Biometric, Iris, OTP).</li>
-                    </ul>
-                </div>
-                
-                <div class="job">
-                    <div class="job-header">
-                        <div>
-                            <h4 class="job-title">Programmer Assistant</h4>
-                            <p class="job-company">Ram Technologies, Hyderabad</p>
-                        </div>
-                        <span class="job-dates">08/2013 – 07/2016</span>
-                    </div>
-                     <ul class="job-responsibilities">
-                        <li>Provided development support for various client-side web and mobile applications using Java.</li>
-                    </ul>
-                </div>
-
             </section>
             
             <section class="education-section">
@@ -541,28 +530,37 @@
                     </div>
                 </div>
             </section>
+
+            <section class="personal-details-section">
+                <h3 class="section-title"><i class="fas fa-id-card"></i>Personal Details</h3>
+                <ul class="personal-details-list">
+                    <li><i class="fas fa-calendar-alt"></i> <strong>Date of Birth:</strong> 08-08-1992</li>
+                    <li><i class="fas fa-ring"></i> <strong>Marital Status:</strong> Married</li>
+                    <li><i class="fas fa-flag"></i> <strong>Nationality:</strong> Indian</li>
+                    <li><i class="fas fa-home"></i> <strong>Permanent Address:</strong> H. No: 1-4-189/1, Aravind Nagar, Jagtial – 505327</li>
+                </ul>
+            </section>
             
             <section class="skills-section">
                 <h3 class="section-title"><i class="fas fa-cogs"></i>Skills</h3>
                 <div class="skills-grid">
                     <span class="skill-tag">Flutter</span>
+					<span class="skill-tag">GetX</span>
+
+					<span class="skill-tag">kotlin multiplatform (KMP)</span>
+                    <span class="skill-tag">Kotlin</span>
+					<span class="skill-tag">Java</span>
+
+                    <span class="skill-tag">Jetpack Compose</span>
                     <span class="skill-tag">Spring Boot</span>
-                    <span class="skill-tag">Microservices</span>
                     <span class="skill-tag">SQLite</span>
                     <span class="skill-tag">Android SDK</span>
-                    <span class="skill-tag">GetX</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Kotlin</span>
-                    <span class="skill-tag">Jetpack</span>
-                    <span class="skill-tag">SOAP</span>
                     <span class="skill-tag">Android Studio</span>
                     <span class="skill-tag">IntelliJ IDEA</span>
                     <span class="skill-tag">HTML</span>
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">Room</span>
-                    <span class="skill-tag">MySQL</span>
                     <span class="skill-tag">Google Maps</span>
-                    <span class="skill-tag">KMP</span>
                 </div>
             </section>
 
