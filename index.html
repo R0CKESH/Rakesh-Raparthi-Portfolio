@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakesh Raparthi - Senior Mobile Programmer</title>
+    <script src="https://kit.fontawesome.com/6a282928f0.js" crossorigin="anonymous"></script>
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* CSS Variables for easy themeing */
+        :root {
+            --bg-color: #FFFFFF;
+            --sidebar-bg: #F8F9FA;
+            --main-text: #333;
+            --sub-text: #555;
+            --heading-text: #111;
+            --primary-color: #007BFF;
+            --border-color: #E0E0E0;
+            --skill-bg: #F1F3F5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F0F2F5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .resume-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            max-width: 1100px;
+            width: 100%;
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .main-content {
+            padding: 2.5rem 3rem;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 2.5rem;
+            border-left: 1px solid var(--border-color);
+        }
+
+        /* --- Header --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .header-left h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--heading-text);
+        }
+
+        .header-left h2 {
+            margin: 0.25rem 0 0;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .contact-info li {
+            font-size: 0.9rem;
+            color: var(--sub-text);
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+            width: 16px;
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            width: 90px;
+            height: 90px;
+            background-color: #E9ECEF;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ADB5BD;
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        /* --- Section Headings --- */
+        h3.section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .sidebar .section-title {
+            border-bottom-color: #DDE2E5;
+        }
+
+        /* --- Summary --- */
+        .summary p {
+            margin: 0;
+            line-height: 1.6;
+            color: var(--sub-text);
+            font-size: 0.95rem;
+        }
+
+        /* --- Experience --- */
+        .experience-section {
+            margin-top: 2rem;
+        }
+
+        .job {
+            margin-bottom: 2rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .job-title {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--heading-text);
+        }
+
+        .job-company {
+            margin: 0 0 0.25rem;
+            font-weight: 500;
+            color: var(--sub-text);
+        }
+        
+        .job-client {
+            font-style: italic;
+            color: var(--sub-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .job-dates {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--sub-text);
+            white-space: nowrap;
+        }
+
+        .job-responsibilities {
+            margin: 0;
+            padding-left: 1.25rem;
+            list-style-type: disc;
+        }
+
+        .job-responsibilities li {
+            font-size: 0.95rem;
+            color: var(--sub-text);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Education --- */
+        .education-section {
+            margin-top: 2rem;
+        }
+        
+        .degree-title {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--heading-text);
+        }
+        
+        .degree-school {
+             margin: 0 0 0.25rem;
+            font-weight: 500;
+            color: var(--sub-text);
+        }
+        
+        .degree-dates {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--sub-text);
+        }
+
+        /* --- Sidebar --- */
+        .achievement, .project {
+            margin-bottom: 1.5rem;
+        }
+        
+        .achievement:last-of-type, .project:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .achievement-title, .project-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--heading-text);
+            display: flex;
+            align-items: center;
+        }
+        
+        .achievement-title i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .achievement-desc, .project-desc, .project-responsibilities {
+            font-size: 0.9rem;
+            color: var(--sub-text);
+            line-height: 1.5;
+            margin-top: 0.5rem;
+        }
+        
+        .project-responsibilities {
+            padding-left: 1rem;
+            margin-bottom: 0;
+            list-style-position: outside;
+        }
+        
+        .project-dates {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Languages --- */
+        .language {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .language-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--heading-text);
+        }
+        
+        .language-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #DDE2E5;
+        }
+        
+        .dot.filled {
+            background-color: var(--primary-color);
+        }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--skill-bg);
+            color: var(--sub-text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid #E0E0E0;
+        }
+        
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-left: none;
+                border-top: 2px solid var(--border-color);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 0;
+            }
+            .resume-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .main-content, .sidebar {
+                padding: 1.5rem;
+            }
+            .header {
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .contact-info {
+                justify-content: center;
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-info li {
+                justify-content: center;
+            }
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <h1>RAKESH RAPARTHI</h1>
+                    <h2>Senior Mobile Programmer</h2>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> 6300154453</li>
+                        <li><i class="fas fa-envelope"></i> rakeshraparthi8@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Jagtial - 505327</li>
+                    </ul>
+                </div>
+                <div class="photo-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </header>
+
+            <section class="summary">
+                <h3 class="section-title">Summary</h3>
+                <p>
+                    Award-winning Senior Mobile Programmer with over 9 years of experience in high-impact e-governance projects. Deep expertise in native Android (Java, Kotlin, Jetpack Compose), cross-platform Flutter (GetX), and shared-logic architecture with Kotlin Multiplatform (KMP). Proven ability to deliver full-stack solutions, from mobile UI to supporting backend Spring Boot microservices and robust database design (SQLite, Room).
+                </p>
+            </section>
+
+            <section class="experience-section">
+                <h3 class="section-title">Experience</h3>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Sr. Programmer</h4>
+                            <p class="job-company">Velocis Systems Pvt. Ltd, Hyderabad</p>
+                        </div>
+                        <span class="job-dates">09/2022 – PRESENT</span>
+                    </div>
+                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
+                    <ul class="job-responsibilities">
+                        <li>Architecting and developing next-generation government applications using Flutter, Kotlin, and Jetpack Compose.</li>
+                        <li>Leading initiatives in modern Android development, utilizing Kotlin Multiplatform (KMP) for shared business logic.</li>
+                        <li>Designing and implementing robust local database solutions using SQLite and Room to ensure offline-first capabilities.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">IT Associate</h4>
+                            <p class="job-company">Transaction Analysts (INDIA) Pvt Ltd, Hyderabad</p>
+                        </div>
+                        <span class="job-dates">01/2022 – 09/2022</span>
+                    </div>
+                    <ul class="job-responsibilities">
+                        <li>Contributed to the development and maintenance of secure financial transaction systems and payment gateway integrations.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Sr. Programmer</h4>
+                            <p class="job-company">Velocis Systems Pvt. Ltd, Hyderabad</p>
+                        </div>
+                        <span class="job-dates">06/2019 – 12/2021</span>
+                    </div>
+                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
+                    <ul class="job-responsibilities">
+                        <li>Developed and supported key e-governance mobile applications for various state departments.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Programmer</h4>
+                            <p class="job-company">SISL InfoTech Pvt.ltd., Hyderabad</p>
+                        </div>
+                        <span class="job-dates">12/2017 – 05/2019</span>
+                    </div>
+                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
+                    <ul class="job-responsibilities">
+                        <li>Produced the native Android (Java) application for secure public donations (Naa Badi Kosam).</li>
+                        <li>Integrated HDFC Razorpay and Billdesk payment APIs.</li>
+                        <li>Supported backend Spring Boot microservices for donation tracking.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Programmer</h4>
+                            <p class="job-company">e-Centric Solutions Pvt. Ltd., Hyderabad</p>
+                        </div>
+                        <span class="job-dates">01/2017 – 12/2017</span>
+                    </div>
+                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
+                    <ul class="job-responsibilities">
+                        <li>Developed and maintained the G2C/G2G app (T-Ration) using Java and Kotlin.</li>
+                        <li>Managed local data persistence using SQLite.</li>
+                        <li>Integrated SOAP web services (WSDLs) for the PDS backend.</li>
+                        <li>Built a geo-location tagging feature using the Google Maps Android SDK.</li>
+                    </ul>
+                </div>
+                 
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Programmer Assistant</h4>
+                            <p class="job-company">Sreeb Technologies, Hyderabad</p>
+                        </div>
+                        <span class="job-dates">07/2016 – 01/2017</span>
+                    </div>
+                    <p class="job-client">Client: National Informatics Center (NIC), Hyderabad</p>
+                     <ul class="job-responsibilities">
+                        <li>Created the mPoS (mobile Point of Sale) Android (Java) app for Fair Price Shops.</li>
+                        <li>Engineered the Aadhaar authentication module (Biometric, Iris, OTP).</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <h4 class="job-title">Programmer Assistant</h4>
+                            <p class="job-company">Ram Technologies, Hyderabad</p>
+                        </div>
+                        <span class="job-dates">08/2013 – 07/2016</span>
+                    </div>
+                     <ul class="job-responsibilities">
+                        <li>Provided development support for various client-side web and mobile applications using Java.</li>
+                    </ul>
+                </div>
+
+            </section>
+            
+            <section class="education-section">
+                <h3 class="section-title">Education</h3>
+                <h4 class="degree-title">Bachelor of Technology (B-Tech)</h4>
+                <p class="degree-school">Vaageswari College of Engineering (JNTU-H)</p>
+                <span class="degree-dates">08/2009 – 05/2013</span>
+            </section>
+
+        </main>
+
+        <aside class="sidebar">
+            <section class="achievements-section">
+                <h3 class="section-title">Key Achievements</h3>
+                <div class="achievement">
+                    <h4 class="achievement-title"><i class="fas fa-trophy"></i>Award of Excellence for T-Ration</h4>
+                    <p class="achievement-desc">Received the award for the T-Ration Mobile App from CSI-Nihilent e-Governance Award (2017-2018).</p>
+                </div>
+                <div class="achievement">
+                    <h4 class="achievement-title"><i class="fas fa-award"></i>Government Applications Expertise</h4>
+                    <p class="achievement-desc">Recognized for successful implementation of PDS in Telangana and delivering multiple e-governance applications.</p>
+                </div>
+            </section>
+            
+            <section class="languages-section">
+                <h3 class="section-title">Languages</h3>
+                <div class="language">
+                    <span class="language-name">English</span>
+                    <div class="language-dots">
+                        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                    </div>
+                </div>
+                <div class="language">
+                    <span class="language-name">Hindi</span>
+                    <div class="language-dots">
+                        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span>
+                    </div>
+                </div>
+                <div class="language">
+                    <span class="language-name">Telugu</span>
+                    <div class="language-dots">
+                        <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="skills-section">
+                <h3 class="section-title">Skills</h3>
+                <div class="skills-grid">
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">SQLite</span>
+                    <span class="skill-tag">Android SDK</span>
+                    <span class="skill-tag">GetX</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">Jetpack</span>
+                    <span class="skill-tag">SOAP</span>
+                    <span class="skill-tag">Android Studio</span>
+                    <span class="skill-tag">IntelliJ IDEA</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Room</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Google Maps</span>
+                    <span class="skill-tag">KMP</span>
+                </div>
+            </section>
+
+            <section class="projects-section">
+                <h3 class="section-title">Projects</h3>
+                
+                <div class="project">
+                    <h4 class="project-title">SBTET Inspection</h4>
+                    <ul class="project-responsibilities">
+                        <li>Built the official inspection app (SBTET Exam Center Capture) using Flutter and GetX.</li>
+                        <li>Implemented core functionality for officials to capture, verify, and submit exam center data.</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h4 class="project-title">Software Suite</h4>
+                    <ul class="project-responsibilities">
+                        <li>Created the "SBTET TG" student portal using Flutter and GetX.</li>
+                        <li>Integrated modules for Exam Center Locator, syllabus access, and attendance tracking.</li>
+                        <li>Engineered a push notification system for critical alerts.</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h4 class="project-title">TS e-Mining Mobile APP</h4>
+                    <p class="project-dates">06/2019 - 12/2021</p>
+                    <ul class="project-responsibilities">
+                        <li>Coded the cross-platform app in Flutter, consuming RESTful APIs for real-time validation.</li>
+                        <li>Integrated the ICICI Razorpay for payment confirmations.</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h4 class="project-title">T AppFolio</h4>
+                    <p class="project-dates">06/2019 - 12/2021</p>
+                    <ul class="project-responsibilities">
+                        <li>Maintained backend Spring Boot microservices supporting the e-governance platform.</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h4 class="project-title">Naa Badi Kosam School Donation</h4>
+                    <p class="project-dates">12/2017 - 05/2019</p>
+                    <ul class="project-responsibilities">
+                        <li>Produced the native Android (Java) application for secure public donations.</li>
+                        <li>Integrated HDFC Razorpay and Billdesk payment APIs.</li>
+                    </ul>
+                </div>
+
+                <div class="project">
+                    <h4 class="project-title">T-Ration</h4>
+                    <p class="project-dates">01/2017 - 12/2017</p>
+                    <ul class="project-responsibilities">
+                        <li>Developed and maintained the G2C/G2G app using Java and Kotlin.</li>
+                        <li>Managed local data persistence using SQLite.</li>
+                        <li>Integrated SOAP web services (WSDLs) for the PDS backend.</li>
+                    </ul>
+                </div>
+
+            </section>
+        </aside>
+    </div>
+
+</body>
+</html>
