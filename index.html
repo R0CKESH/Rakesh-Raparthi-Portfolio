@@ -137,7 +137,6 @@
         .section {
             max-width: 1120px;
             margin: 0 auto;
-             padding: 2.2rem 1.2rem;
         }
 
         .section-header {
@@ -274,6 +273,37 @@
             border: 1px solid rgba(148, 163, 184, 0.3);
         }
 
+        /* social links under hero */
+        .social-links {
+            margin-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.85);
+            color: var(--text-muted);
+            transition: var(--transition-fast);
+        }
+
+        .social-links a span.social-badge {
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            color: var(--text-main);
+            border-color: var(--accent);
+        }
+
         .hero-right {
             position: relative;
             display: flex;
@@ -330,7 +360,7 @@
             position: relative;
             right: auto;
             bottom: auto;
-            width: 210px;
+            width: 100%;
             padding: 0.9rem;
             border-radius: 18px;
             background: rgba(15, 23, 42, 0.98);
@@ -650,8 +680,8 @@
     <header class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                RR
-                <span>MOBILE · KMP</span>
+                Rakesh Raparthi
+                <span>MOBILE · KMP · FLUTTER</span>
             </div>
             <div class="nav-toggle" onclick="toggleMenu()">☰</div>
             <ul class="nav-links" id="navLinks">
@@ -686,27 +716,36 @@
                     Multiplatform to ship production-ready experiences.
                 </p>
 
-               
-			   
-			   <div class="hero-actions">
-    <a
-        href="https://drive.google.com/file/d/1Vs2FG9a6yc3EdxwWhOm3UaRJqiGpQC-O/view?usp=sharing"
-        class="btn btn-primary"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        Download Resume
-    </a>
-    <a href="#contact" class="btn btn-ghost">
-        Contact Me
-    </a>
-</div>
-
+                <div class="hero-actions">
+                    <a
+                        href="https://drive.google.com/file/d/1Vs2FG9a6yc3EdxwWhOm3UaRJqiGpQC-O/view?usp=drive_link"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">
+                        Contact Me
+                    </a>
+                </div>
 
                 <div class="hero-meta">
                     <span>9+ years · Mobile Development</span>
                     <span>Android · Flutter · KMP</span>
                     <span>Hyderabad, India</span>
+                </div>
+
+                <!-- Social links -->
+                <div class="social-links">
+                    <a href="https://github.com/R0CKESH" target="_blank" rel="noopener noreferrer">
+                        <span class="social-badge">GH</span>
+                        <span>github.com/R0CKESH</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rakesh-raparthi-a18334231/" target="_blank" rel="noopener noreferrer">
+                        <span class="social-badge">in</span>
+                        <span>LinkedIn Profile</span>
+                    </a>
                 </div>
             </div>
 
@@ -1141,6 +1180,18 @@
                     <p class="contact-item">
                         <strong>Location:</strong> Hyderabad, Telangana, India
                     </p>
+                    <p class="contact-item">
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/R0CKESH" target="_blank" rel="noopener noreferrer">
+                            github.com/R0CKESH
+                        </a>
+                    </p>
+                    <p class="contact-item">
+                        <strong>LinkedIn:</strong>
+                        <a href="https://www.linkedin.com/in/rakesh-raparthi-a18334231/" target="_blank" rel="noopener noreferrer">
+                            linkedin.com/in/rakesh-raparthi-a18334231
+                        </a>
+                    </p>
                 </div>
                 <p class="contact-highlight">
                     Prefer email or WhatsApp for interview scheduling, consulting,
@@ -1151,13 +1202,9 @@
             <div class="contact-card">
                 <h3>Quick Message</h3>
                 <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.4rem;">
-                    This is a static portfolio (no backend). To contact me, just
-                    use the email or phone on the left, or connect via LinkedIn /
-                    GitHub links when added.
-                </p>
-                <p style="font-size: 0.85rem; color: var(--accent); margin-top: 0.9rem;">
-                    Tip: you can extend this section later with a live form using
-                    Formspree, Netlify Forms, or your own backend.
+                    This is a static portfolio (no backend). To contact me, use the
+                    email or phone on the left, or connect via my GitHub and LinkedIn
+                    profiles above.
                 </p>
             </div>
         </div>
