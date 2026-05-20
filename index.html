@@ -120,10 +120,6 @@
         .code-window {
             box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
         }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease forwards;
-        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200">
@@ -241,7 +237,7 @@
                 </div>
             </div>
 
-            <!-- Right: Code / Visual -->
+            <!-- Right: Improved Code Visual -->
             <div class="lg:col-span-5">
                 <div class="code-window bg-slate-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl">
                     <!-- Code Header -->
@@ -252,24 +248,27 @@
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
                             </div>
-                            <span class="ml-3 text-xs font-mono text-slate-400">MobileArchitect.kt</span>
+                            <span class="ml-3 text-xs font-mono text-slate-400">DashboardViewModel.kt</span>
                         </div>
-                        <div class="text-[10px] px-2.5 py-px rounded bg-white/5 text-slate-400">Kotlin + Flutter</div>
+                        <div class="text-[10px] px-2.5 py-px rounded bg-white/5 text-slate-400">Kotlin + Clean Arch</div>
                     </div>
                     
-                    <!-- Code Content -->
+                    <!-- Improved Code Content -->
                     <div class="p-6 font-mono text-sm leading-relaxed bg-[#0f172a]">
-<pre class="text-emerald-300"><code>class MobileArchitect {
-    private val stack = listOf(
-        "Flutter + GetX",
-        "Jetpack Compose",
-        "Kotlin Multiplatform",
-        "Clean Architecture"
-    )
+<pre class="text-emerald-300"><code>class DashboardViewModel @Inject constructor(
+    private val repository: MiningRepository
+) : ViewModel() {
 
-    fun deliverImpact() {
-        println("Building scalable\n" +
-                "e-governance solutions")
+    private val _state = MutableStateFlow&lt;UiState&gt;(UiState.Loading)
+    val state: StateFlow&lt;UiState&gt; = _state
+
+    init { loadData() }
+
+    private fun loadData() = viewModelScope.launch {
+        repository.getMiningRecords()
+            .collect { data -&gt; 
+                _state.value = UiState.Success(data) 
+            }
     }
 }</code></pre>
                     </div>
@@ -419,7 +418,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- Project 1: TS e-Mining & SBTET TG Software Suite -->
+                <!-- Project 1: TS e-Mining & SBTET TG (Updated) -->
                 <div class="project-card group bg-slate-900 border border-white/10 rounded-3xl p-7 flex flex-col modern-card">
                     <div class="flex justify-between items-start mb-5">
                         <div>
@@ -473,7 +472,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Legacy Government Systems -->
+                <!-- Project 3 -->
                 <div class="project-card group bg-slate-900 border border-white/10 rounded-3xl p-7 flex flex-col modern-card">
                     <div class="flex justify-between items-start mb-5">
                         <div>
@@ -564,7 +563,7 @@
                 </div>
             </div>
 
-            <!-- Additional skills row -->
+            <!-- Additional skills -->
             <div class="mt-6 flex flex-wrap gap-2 justify-center">
                 <span class="px-4 py-1.5 text-xs rounded-3xl bg-white/5 border border-white/10">Google Maps SDK</span>
                 <span class="px-4 py-1.5 text-xs rounded-3xl bg-white/5 border border-white/10">Google ML Kit</span>
@@ -584,7 +583,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- Award 1 -->
                 <div class="glass rounded-3xl p-8 border border-white/10 modern-card">
                     <div class="flex items-start gap-x-4">
                         <div class="text-5xl text-amber-400 mt-1">
@@ -593,12 +591,11 @@
                         <div class="flex-1">
                             <div class="font-semibold text-2xl tracking-tight">SKOCH Order of Merit</div>
                             <div class="text-emerald-400 font-medium">2024</div>
-                            <p class="mt-4 text-slate-300">Awarded for technical excellence and outstanding contribution to the <span class="font-medium text-white">TS e-Mining Project</span> — a landmark digital transformation initiative in the mining sector.</p>
+                            <p class="mt-4 text-slate-300">Awarded for technical excellence and outstanding contribution to the <span class="font-medium text-white">TS e-Mining Project</span> — a landmark digital transformation initiative.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Award 2 -->
                 <div class="glass rounded-3xl p-8 border border-white/10 modern-card">
                     <div class="flex items-start gap-x-4">
                         <div class="text-5xl text-sky-400 mt-1">
@@ -607,7 +604,7 @@
                         <div class="flex-1">
                             <div class="font-semibold text-2xl tracking-tight">Digital Transformation Excellence Award</div>
                             <div class="text-emerald-400 font-medium">2024</div>
-                            <p class="mt-4 text-slate-300">Recognized for innovation and impact in developing government mobile solutions that drive large-scale digital transformation across public services.</p>
+                            <p class="mt-4 text-slate-300">Recognized for innovation in developing government mobile solutions that drive large-scale digital transformation across public services.</p>
                         </div>
                     </div>
                 </div>
@@ -666,12 +663,10 @@
     </footer>
 
     <script>
-        // Tailwind script
         function initializeTailwind() {
             document.documentElement.style.setProperty('--accent', '#6366f1');
         }
 
-        // Navbar scroll effect
         function initNavbar() {
             const navbar = document.getElementById('navbar');
             
@@ -683,7 +678,6 @@
                 }
             });
 
-            // Active nav link highlighting
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = ['about', 'experience', 'projects', 'skills', 'awards'];
             
@@ -708,7 +702,6 @@
             });
         }
 
-        // Mobile menu
         function initMobileMenu() {
             const menuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -726,7 +719,6 @@
                 }
             });
 
-            // Close menu when clicking a link
             document.querySelectorAll('.mobile-nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
@@ -735,7 +727,6 @@
             });
         }
 
-        // Smooth scroll for anchor links
         function initSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -758,14 +749,12 @@
             });
         }
 
-        // Initialize everything
         function init() {
             initializeTailwind();
             initNavbar();
             initMobileMenu();
             initSmoothScroll();
             
-            // Optional: subtle entrance animation for cards
             const cards = document.querySelectorAll('.modern-card, .project-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
@@ -777,8 +766,6 @@
                     card.style.transform = 'translateY(0)';
                 }, 300);
             });
-
-            console.log('%c[Portfolio] Modern portfolio initialized successfully.', 'color:#64748b');
         }
 
         window.onload = init;
